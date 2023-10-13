@@ -1,0 +1,7 @@
+db/
+
+#vim temporaries
+*.sw[po]
+
+# outpus files
+/*.csv
