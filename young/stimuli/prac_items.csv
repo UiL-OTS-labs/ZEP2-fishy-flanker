@@ -1,7 +1,9 @@
-id;isi;flankers;side;filename
-1;500;INCONGRUENT;RIGHT;congruent_r.svg
-2;500;INCONGRUENT;LEFT;incongruent_l.svg
-3;500;NEUTRAL;LEFT;neutral_l.svg
-4;500;INCONGRUENT;RIGHT;incongruent_r.svg
-5;500;INCONGRUENT;LEFT;congruent_l.svg
-6;500;NEUTRAL;RIGHT;neutral_r.svg
+id;flankers;side;filename;feedback_fn
+1;INCONGRUENT;RIGHT;ir.png;irf.png
+2;INCONGRUENT;RIGHT;ir.png;irf.png
+3;CONGRUENT;RIGHT;cr.png;crf.png
+4;CONGRUENT;RIGHT;cr.png;crf.png
+5;INCONGRUENT;LEFT;il.png;ilf.png
+6;INCONGRUENT;LEFT;il.png;ilf.png
+7;CONGRUENT;LEFT;cl.png;clf.png
+8;CONGRUENT;LEFT;cl.png;clf.png
