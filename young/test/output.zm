@@ -21,7 +21,6 @@ record TestOutput
     int         block_nr;
     int         trial_nr;       // trial number
     int         id;             // item id
-    int         inter_stimulus_interval;
     FlankerType congruence;
     int         rt;
     DirectionType selected_side;
@@ -38,7 +37,6 @@ void test_output_append(TestOutput data)
 
     expdb.set_trial_data_int_field("trialnum", data.trial_nr);
     expdb.set_trial_data_int_field("id", data.id);
-    expdb.set_trial_data_int_field("isi", data.inter_stimulus_interval);
     expdb.set_trial_data_enum_field("congruence", string(data.congruence));
     expdb.set_trial_data_int_field("rt", data.rt);
     expdb.set_trial_data_enum_field("selected_side", string(data.selected_side));

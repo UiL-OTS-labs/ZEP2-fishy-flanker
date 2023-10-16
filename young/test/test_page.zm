@@ -219,7 +219,7 @@ Page test_page
         item = it;
 
         // Show this page (if not yet done) and make tref the trial start time.
-        tref = test_window1.show_test_page(this, tref+dur(item.isi));
+        tref = test_window1.show_test_page(this, tref + ISI);
 
         // Reset response data.
         response.clear();
@@ -240,8 +240,8 @@ Page test_page
         // Update status line on control window. Cleared in done() above.
         control.set_status(
             string(item.id) + "  " + 
-            string(item.filename) + "  " +
-            string(item.isi));
+            string(item.filename)
+        );
 
 
         // Remember who to signal when the trial is over.
