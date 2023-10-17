@@ -37,21 +37,22 @@ const bool      GROUP_RECORD_UPDATEABLE         = false;
 // selected group.
 const bool      SHOW_ASSIGNED_GROUP             = true;
 
-const dur       STIM_DUR    = 5s;   // max dur of stimulus
-const dur       FIX_DUR     = 1s;   // Fixation cross duration  
-const dur       ITI         = 400ms;
+const dur       STIM_DUR            = 5s;   // max dur of stimulus
+const dur       FIX_DUR             = 1s;   // Fixation cross duration  
+const dur       FEEDBACK_DUR        = 2s;   // Feedback duration  
+const dur       ITI                 = 400ms;// duration between 2 trials
 
 // Duration of the feedback presentation.
 const dur       FEEDBACK_DURATION               = 1000ms;
-
-const dur 		FIXATION_CROSS_DURATION  		= 300ms;
-const dur 		BLANK_AFTER_FIXATION 			= 200ms;
 
 const string	PRAC_ITEM_FILENAME = "prac_items.csv";
 const string	TEST_ITEM_FILENAME = "test_items.csv";
 
 // Height is automatically adjusted for the fish images
 const int 		IMAGE_WIDTH 					= 150;
+
+const real      ARROW_WIDTH                     = 8;
+const real      ARROW_HEIGHT                    = 50;
 
 // Each block contains a single run of the entire stimulus list
 const int 		NUMBER_OF_BLOCKS				= 2;

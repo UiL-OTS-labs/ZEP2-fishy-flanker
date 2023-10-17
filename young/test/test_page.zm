@@ -137,6 +137,31 @@ Page test_page
                     offset_y = -height / 2.0;
                 }
             }
+
+            PolygonShape feedback
+            {
+                init()
+                {
+                    line_pattern_color = color:red;
+                    fill_pattern_color = color:blue;
+                    line_width = 3;
+                    num_points = 7;
+                    point [0] = -ARROW_WIDTH / 2, -ARROW_HEIGHT / 2;
+                    point [1] = -ARROW_WIDTH / 2,  ARROW_HEIGHT / 2 - ARROW_HEIGHT / 10;
+                    point [2] = -ARROW_WIDTH / 2 * 2, ARROW_HEIGHT / 2 - ARROW_HEIGHT / 10;
+                    point [3] = 0, ARROW_HEIGHT / 2;
+                    point [4] = ARROW_WIDTH / 2 * 2, ARROW_HEIGHT / 2 - ARROW_HEIGHT / 10;
+                    point [5] = ARROW_WIDTH / 2,  ARROW_HEIGHT / 2 - ARROW_HEIGHT / 10;
+                    point [6] = ARROW_WIDTH / 2, -ARROW_HEIGHT / 2;
+
+                    offset_y = -stimulus.height / 2;
+                }
+
+                on_event:finish()
+                {
+                    done(CONTINUE);
+                }
+            }
         }
 
         time start_stimulus(time t)
@@ -149,20 +174,46 @@ Page test_page
             canvas.flanker2.image = stimuli_dir() + "/images/" + item.flanker_fn; 
             canvas.flanker3.image = stimuli_dir() + "/images/" + item.flanker_fn; 
             canvas.flanker4.image = stimuli_dir() + "/images/" + item.flanker_fn; 
+            
+            if (item.side == LEFT)
+                canvas.feedback.offset_x = -canvas.stimulus.width / 3.0;
+            if (item.side == RIGHT)
+                canvas.feedback.offset_x = canvas.stimulus.width / 3.0;
 
-            canvas.stimulus.start(canvas.fixation.expected_finish_time, STIM_DUR);
-            canvas.flanker1.start(canvas.fixation.expected_finish_time, STIM_DUR);
-            canvas.flanker2.start(canvas.fixation.expected_finish_time, STIM_DUR);
-            canvas.flanker3.start(canvas.fixation.expected_finish_time, STIM_DUR);
-            canvas.flanker4.start(canvas.fixation.expected_finish_time, STIM_DUR);
+            canvas.stimulus.start(
+                canvas.fixation.expected_finish_time, STIM_DUR + FEEDBACK_DUR
+            );
+            canvas.flanker1.start(
+                canvas.fixation.expected_finish_time, STIM_DUR + FEEDBACK_DUR
+            );
+            canvas.flanker2.start(
+                canvas.fixation.expected_finish_time, STIM_DUR + FEEDBACK_DUR
+            );
+            canvas.flanker3.start(
+                canvas.fixation.expected_finish_time, STIM_DUR + FEEDBACK_DUR
+            );
+            canvas.flanker4.start(
+                canvas.fixation.expected_finish_time, STIM_DUR + FEEDBACK_DUR
+            );
 
             // Return stimulus onset time.
             return canvas.stimulus.expected_start_time;
         }
 
+        void start_feedback(time t)
+        {
+            stop_stimulus(t + FEEDBACK_DUR);
+            canvas.feedback.start(t, FEEDBACK_DUR);
+        }
+
         void stop_stimulus(time t)
         {
             canvas.stimulus.stop(t);
+
+            canvas.flanker1.stop(t);
+            canvas.flanker2.stop(t);
+            canvas.flanker3.stop(t);
+            canvas.flanker4.stop(t);
         }
 
         void reset()
@@ -175,6 +226,7 @@ Page test_page
             canvas.flanker2.is_visible = false;
             canvas.flanker3.is_visible = false;
             canvas.flanker4.is_visible = false;
+            canvas.feedback.is_visible = false;
         }
     }
 
@@ -227,7 +279,7 @@ Page test_page
 
         on_event:finish()
         {
-            done(CONTINUE);
+            layout.start_feedback(event_time);
         }
     }
 
@@ -300,7 +352,7 @@ Page test_page
 
         // Response interval starts at stimulus onset. Timeout after 
         // RESPONSE_DURATION unless this duration is 0s or less.
-        response.start(stimonset, 5000);
+        response.start(stimonset, STIM_DUR);
 
 
         // Update progress counter (if enabled).
