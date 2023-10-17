@@ -37,27 +37,22 @@ const bool      GROUP_RECORD_UPDATEABLE         = false;
 // selected group.
 const bool      SHOW_ASSIGNED_GROUP             = true;
 
-// Duration of the interval between two trials.
-const dur       INTERTRIAL_INTERVAL             = 1000ms; // is not really used.
+const dur       STIM_DUR    = 5s;   // max dur of stimulus
+const dur       FIX_DUR     = 1s;   // Fixation cross duration  
+const dur       ITI         = 400ms;
 
 // Duration of the feedback presentation.
 const dur       FEEDBACK_DURATION               = 1000ms;
 
-// latency before continuing is possible following a pausez
-const dur		NON_RESPONSE_PERIOD_AT_PAUSE 	= 2s;
-
 const dur 		FIXATION_CROSS_DURATION  		= 300ms;
 const dur 		BLANK_AFTER_FIXATION 			= 200ms;
-
-const dur 		TRIAL_DURATION					=	2s; // (ISI (defined in TestItems) + fix_dur + blank + response time) + VARIABLE = TRIAL_LENGTH	
 
 const string	PRAC_ITEM_FILENAME = "prac_items.csv";
 const string	TEST_ITEM_FILENAME = "test_items.csv";
 
-const int 		FIXATION_CROSS_SIZE 			= 20;  //radius
-const int 		FIXATION_CROSS_WIDTH 			= 3;  //line width
+// Height is automatically adjusted for the fish images
+const int 		IMAGE_WIDTH 					= 150;
 
-const int 		IMAGE_WIDTH 					= 500; //height is automatically adjusted for arrow images
-const int 		NUMBER_OF_BLOCKS				= 2; //each block contains a single run of the entire stimulus list
+// Each block contains a single run of the entire stimulus list
+const int 		NUMBER_OF_BLOCKS				= 2;
 
-const dur       ISI = 400ms;
