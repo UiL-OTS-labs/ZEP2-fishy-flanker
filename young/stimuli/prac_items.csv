@@ -1,9 +1,0 @@
-id;type;side;stim_fn;flanker_fn
-1;INCONGRUENT;RIGHT;r.png;l.png
-2;INCONGRUENT;RIGHT;r.png;l.png
-3;CONGRUENT;RIGHT;r.png;r.png
-4;CONGRUENT;RIGHT;r.png;r.png
-5;INCONGRUENT;LEFT;l.png;r.png
-6;INCONGRUENT;LEFT;l.png;r.png
-7;CONGRUENT;LEFT;l.png;l.png
-8;CONGRUENT;LEFT;l.png;l.png

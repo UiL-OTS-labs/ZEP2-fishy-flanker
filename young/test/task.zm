@@ -17,37 +17,96 @@ import output;
 Block task
 {
 
-    Block practice
+    Block practice_block
     {
+        int num_correct;
 
         on_event:entry()
         {
-            test_page.hide_cursor();
+            shuffle_practice_items();
+            reset_practice_items();
 
-            num_cycles = prac_items.size;
-
-            test_page.setup(prac_items.size, true, true);
+            // is adjusted when participant meets practice performance criterion.
+            num_cycles = 10000;
         }
 
-        Trial trial
+        TransientPart test_instruction
         {
-            TestItem item;
+            entry()
+            {
+                if (practice_block.cycle > 0)
+                    instruction.enter();
+                else
+                    practice.enter();
+            }
+        }
+
+        Part instruction
+        {
+            entry()
+            {
+                pause_page.set_text(
+                        "Je had er " + num_correct + " goed.\n"
+                        "Probeer er zoveel mogelijk goed te beantwoorden."
+                        );
+                pause_page.action(this);
+            }
+        }
+
+
+        Block practice
+        {
 
             on_event:entry()
             {
-                item = prac_items[practice.cycle];
-                test_page.action(
-                    this,
-                    item,
-                    reference_time,
-                    practice.num_cycles
-                    );
+                test_page.hide_cursor();
+
+                num_cycles = prac_items.size;
+
+                test_page.setup(prac_items.size, false, false);
             }
 
-//            Can be used to save practice performance
-//            on_event:exit()
-//            {
-//            }
+            on_event:exit()
+            {
+                num_correct = calc_num_practice_correct();
+                if (num_correct > prac_items.size - NUM_ALLOWED_ERRORS)
+                {
+                    // terminate the practice_block loop
+                    practice_block.num_cycles = practice_block.cycle;
+                }
+            }
+
+            Trial trial
+            {
+                TestItem item;
+
+                on_event:entry()
+                {
+                    item = prac_items[practice.cycle];
+                    test_page.action(
+                            this,
+                            item,
+                            reference_time,
+                            practice.num_cycles
+                            );
+                }
+
+                on_event:exit()
+                {
+                     //generate and save output.
+                     TestOutput output;
+                     output.block_nr = practice_block.cycle;
+                     output.trial_nr = practice.cycle+1;
+                     output.id = item.id;
+                     output.congruence = item.flankers;
+                     output.rt = test_page.response.rt;
+                     output.selected_side = item.side;
+                     output.expected_side = test_page.response.value;
+                     output.correct = test_page.response.correct;
+
+                     prac_output_append(output);
+                }
+            }
         }
     }
 
@@ -59,52 +118,81 @@ Block task
         }
     }
 
-    Block test
+    Block test_block
     {
-
-        on_event:entry()
+        entry()
         {
-            test_page.hide_cursor();
-
-            num_cycles = test_items.size;
-
-            test_page.setup();
+            num_cycles = 2;
+            shuffle_test_items();
         }
 
-        on_event:exit()
+        TransientPart test_pauze
         {
-            test_page.show_cursor();
-            test_page.cleanup();
+            entry() {
+                // enter pauze when not in first iteration of test_block.
+                if (test_block.cycle == 0)
+                    test.enter();
+                else
+                    pauze.enter();
+            }
         }
 
-        Trial stimulus
+        Part pauze
         {
-            TestItem item;
+            entry() {
+                pause_page.set_text("Pauze!");
+                pause_page.action(this, 150s);
+            }
+        }
+
+
+        Block test
+        {
 
             on_event:entry()
             {
-                item = test_items[test.cycle];
-                test_page.action(this, item, now());
+                test_page.hide_cursor();
 
-                // debug line:
-                // println("Present: " + test_block.cycle + " " + item.id);
-                // signal(this,CONTINUE);
+                num_cycles = test_items.size;
+
+                test_page.setup();
             }
 
             on_event:exit()
             {
-                //generate and save output.
-                TestOutput output;
-//                output.block_nr = test_block.block_nr;
-                output.trial_nr = test.cycle+1;
-                output.id = item.id;
-                output.congruence = item.flankers;
-                output.rt = test_page.response.rt;
-                output.selected_side = item.side;
-                output.expected_side = test_page.response.value;
-                output.correct = test_page.response.correct;
+                test_page.show_cursor();
+                test_page.cleanup();
+            }
 
-                test_output_append(output);
+            Trial stimulus
+            {
+                TestItem item;
+
+                on_event:entry()
+                {
+                    item = test_items[test.cycle];
+                    test_page.action(this, item, now());
+
+                    // debug line:
+                    // println("Present: " + test_block.cycle + " " + item.id);
+                    // signal(this,CONTINUE);
+                }
+
+                on_event:exit()
+                {
+                    //generate and save output.
+                    TestOutput output;
+    //                output.block_nr = test_block.block_nr;
+                    output.trial_nr = test.cycle+1;
+                    output.id = item.id;
+                    output.congruence = item.flankers;
+                    output.rt = test_page.response.rt;
+                    output.selected_side = item.side;
+                    output.expected_side = test_page.response.value;
+                    output.correct = test_page.response.correct;
+
+                    test_output_append(output);
+                }
             }
         }
     }

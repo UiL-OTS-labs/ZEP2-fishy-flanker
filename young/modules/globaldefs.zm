@@ -57,3 +57,4 @@ const real      ARROW_HEIGHT                    = 50;
 // Each block contains a single run of the entire stimulus list
 const int 		NUMBER_OF_BLOCKS				= 2;
 
+const int       NUM_ALLOWED_ERRORS              = 2;
