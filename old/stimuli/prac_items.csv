@@ -1,9 +1,9 @@
 id;flankers;side;filename
-1;INCONGRUENT;RIGHT;congruent_r.svg
+1;CONGRUENT;RIGHT;congruent_r.svg
 2;INCONGRUENT;LEFT;incongruent_l.svg
 3;INCONGRUENT;RIGHT;incongruent_r.svg
-4;INCONGRUENT;LEFT;congruent_l.svg
-5;INCONGRUENT;RIGHT;congruent_r.svg
+4;CONGRUENT;LEFT;congruent_l.svg
+5;CONGRUENT;RIGHT;congruent_r.svg
 6;INCONGRUENT;LEFT;incongruent_l.svg
 7;INCONGRUENT;RIGHT;incongruent_r.svg
-8;INCONGRUENT;LEFT;congruent_l.svg
+8;CONGRUENT;LEFT;congruent_l.svg
