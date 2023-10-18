@@ -24,7 +24,6 @@ Block task
         on_event:entry()
         {
             shuffle_practice_items();
-            reset_practice_items();
 
             // is adjusted when participant meets practice performance criterion.
             num_cycles = 10000;
@@ -59,6 +58,7 @@ Block task
 
             on_event:entry()
             {
+                reset_practice_items();
                 test_page.hide_cursor();
 
                 num_cycles = prac_items.size;
