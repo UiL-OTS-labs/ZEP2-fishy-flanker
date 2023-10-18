@@ -38,7 +38,9 @@ const bool      GROUP_RECORD_UPDATEABLE         = false;
 const bool      SHOW_ASSIGNED_GROUP             = true;
 
 // Duration of the interval between two trials.
-const dur       INTERTRIAL_INTERVAL             = 1000ms; // is not really used.
+const dur       ITI                             = 1000ms;
+const dur       STIM_DUR                        = 3s;
+const dur       FIX_DUR                         = 500ms;
 
 // Duration of the feedback presentation.
 const dur       FEEDBACK_DURATION               = 1000ms;
