@@ -69,7 +69,7 @@ Block task
             on_event:exit()
             {
                 num_correct = calc_num_practice_correct();
-                if (num_correct > prac_items.size - NUM_ALLOWED_ERRORS)
+                if (num_correct >= prac_items.size - NUM_ALLOWED_ERRORS)
                 {
                     // terminate the practice_block loop
                     practice_block.num_cycles = practice_block.cycle;
