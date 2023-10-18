@@ -23,6 +23,7 @@ Block task
         on_event:entry()
         {
             test_page.hide_cursor();
+            shuffle_items();
 
             num_cycles = prac_items.size;
 

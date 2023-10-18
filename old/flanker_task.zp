@@ -15,14 +15,6 @@ because the stripes do not point in a direction.
 
 There is a practice round.
 
-Each trial has a defined ISI (here 500ms) that is used as follows:
-T_0ms = empty_page
-T_500ms = fixation_cross_shown (T_0+ISI)
-T_800ms = fixation_cross_hides
-T_1000ms = arrows are shown
-T_1000ms+RT=participant_responses
-T_1000ms+RT+((total_trial_time-1000ms)-RT)=next trial starts;
-
 Total trial time is now set at ~2 seconds so there is a delay after the
 response that is dependent on the response, ISI, fixation_cross_duration
 If response is longer than the length duration it defaults to 0s.
@@ -63,8 +55,6 @@ Experiment experiment
         control.enable_all_buttons(CONTINUE);
 
         if (test::load_stimuli() != OK)
-            terminate;
-        if (test::shuffle_items() != OK)
             terminate;
     }
 
