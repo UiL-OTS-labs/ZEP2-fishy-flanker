@@ -98,7 +98,6 @@ Block task
 //                output.block_nr = test_block.block_nr;
                 output.trial_nr = test.cycle+1;
                 output.id = item.id;
-                output.inter_stimulus_interval = item.isi;
                 output.congruence = item.flankers;
                 output.rt = test_page.response.rt;
                 output.selected_side = item.side;

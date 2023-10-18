@@ -35,7 +35,6 @@ enum DirectionType
 record TestItem
 {
     int             id;             // item id
-    int             isi;
     FlankerType     flankers;
     DirectionType   side;
     string          filename;
