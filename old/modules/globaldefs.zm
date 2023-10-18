@@ -60,4 +60,6 @@ const int 		FIXATION_CROSS_SIZE 			= 20;  //radius
 const int 		FIXATION_CROSS_WIDTH 			= 3;  //line width
 
 const int 		IMAGE_WIDTH 					= 500; //height is automatically adjusted for arrow images
-const int 		NUMBER_OF_BLOCKS				= 2; //each block contains a single run of the entire stimulus list
+
+const int       NUM_ALLOWED_ERRORS              = 2;
+
