@@ -11,7 +11,7 @@ rem set ZEP_DIR=C:\zep
 rem ----------------------------------------------------------------------------
 
 title Zep Console Window
-color 70
+color F0
 mode 100,40
 
 if "%ZEP_DIR%" == "" goto SKIP1

@@ -62,6 +62,9 @@ if [ ! "$DONE" ]; then
 	echo "to"
 	echo "   ZEP_DIR=/home/john/mystuff/zep"
 	echo "and try again."
+	echo ""
+	echo "Hit <Enter> to coninue."
+	read x
 	exit
 fi
 
