@@ -13,9 +13,35 @@ HISTORY:
 import test_page;
 import stimuli;
 import output;
+import instructions;
 
 Block task
 {
+    Block 
+    {
+        entry()
+        {
+            blank_page.action_auto(this, 500ms);
+        }
+    }
+
+    Block pre_prac_instruction
+    {
+        entry()
+        {
+            pause_page.set_text(PRE_PRAC_INSTRUCTION, true);
+            pause_page.action(this);
+            control.enable_all_buttons(CONTINUE);
+        }
+    }
+    
+    Block 
+    {
+        entry()
+        {
+            blank_page.action_auto(this, 500ms);
+        }
+    }
 
     Block practice_block
     {
@@ -51,7 +77,6 @@ Block task
                 pause_page.action(this);
             }
         }
-
 
         Block practice
         {
@@ -110,9 +135,27 @@ Block task
         }
     }
 
-    Part
+    Block 
     {
-        on_event:entry()
+        entry()
+        {
+            blank_page.action_auto(this, 500ms);
+        }
+    }
+
+    Block post_prac_instruction
+    {
+        entry()
+        {
+            pause_page.set_text(POST_PRAC_INSTRUCTION, true);
+            pause_page.action(this);
+            control.enable_all_buttons(CONTINUE);
+        }
+    }
+    
+    Block 
+    {
+        entry()
         {
             blank_page.action_auto(this, 500ms);
         }
