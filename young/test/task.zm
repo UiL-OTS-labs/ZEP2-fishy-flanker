@@ -87,7 +87,7 @@ Block task
                             this,
                             item,
                             reference_time,
-                            practice.num_cycles
+                            practice.cycle
                             );
                 }
 

@@ -279,8 +279,7 @@ Page test_page
 
         on_event:finish()
         {
-            real correctness = correct == 1 ? 1.0: 0.0;
-            test_page_overlay.start_feedback(correctness, FEEDBACK_DUR);
+            test_page_overlay.start_feedback(correct == 1 ? 1.0 : -1.0, FEEDBACK_DUR);
             layout.start_feedback(event_time);
         }
     }
