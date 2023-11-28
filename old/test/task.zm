@@ -13,9 +13,36 @@ HISTORY:
 import test_page;
 import stimuli;
 import output;
+import instructions;
 
 Block task
 {
+    Block 
+    {
+        entry()
+        {
+            blank_page.action_auto(this, 500ms);
+        }
+    }
+
+    Block pre_prac_instruction
+    {
+        entry()
+        {
+            pause_page.set_text(PRE_PRAC_INSTRUCTION, true);
+            pause_page.action(this);
+            control.enable_all_buttons(CONTINUE);
+        }
+    }
+    
+    Block 
+    {
+        entry()
+        {
+            blank_page.action_auto(this, 500ms);
+        }
+    }
+
     Block practice_block
     {
         int num_correct;
@@ -61,7 +88,7 @@ Block task
 
                 reset_practice_items();
 
-                test_page.setup();
+                test_page.setup(practice.num_cycles, true);
             }
             
             on_event:exit()
@@ -85,7 +112,7 @@ Block task
                         this,
                         item,
                         reference_time,
-                        practice.num_cycles
+                        practice.cycle
                         );
                 }
 
@@ -107,10 +134,28 @@ Block task
             }
         }
     }
-
-    Part
+    
+    Block 
     {
-        on_event:entry()
+        entry()
+        {
+            blank_page.action_auto(this, 500ms);
+        }
+    }
+
+    Block post_prac_instruction
+    {
+        entry()
+        {
+            pause_page.set_text(POST_PRAC_INSTRUCTION, true);
+            pause_page.action(this);
+            control.enable_all_buttons(CONTINUE);
+        }
+    }
+    
+    Block 
+    {
+        entry()
         {
             blank_page.action_auto(this, 500ms);
         }

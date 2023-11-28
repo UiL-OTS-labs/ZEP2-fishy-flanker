@@ -153,7 +153,7 @@ Page test_page
 
                 test_page_overlay.start_feedback(
                     this,
-                    correct,
+                    correct == 1 ? 1.0 : -1.0,
                     FEEDBACK_DURATION
                     );
 

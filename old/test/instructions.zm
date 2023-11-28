@@ -1,0 +1,6 @@
+
+const string PRE_PRAC_INSTRUCTION = 
+   M"Naar welke kant zwemt het middelste visje?\n"
+    "<b>Links</b> of <b>rechts</b>?";
+
+const string POST_PRAC_INSTRUCTION = PRE_PRAC_INSTRUCTION;
