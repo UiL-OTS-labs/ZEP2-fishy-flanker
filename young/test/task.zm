@@ -63,7 +63,7 @@ Block task
 
                 num_cycles = prac_items.size;
 
-                test_page.setup();
+                test_page.setup(practice.num_cycles, true);
             }
 
             on_event:exit()

@@ -279,6 +279,8 @@ Page test_page
 
         on_event:finish()
         {
+            real correctness = correct == 1 ? 1.0: 0.0;
+            test_page_overlay.start_feedback(correctness, FEEDBACK_DUR);
             layout.start_feedback(event_time);
         }
     }
