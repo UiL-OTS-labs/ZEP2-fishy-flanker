@@ -13,7 +13,7 @@ HISTORY:
 import test_page;
 import stimuli;
 import output;
-import instructions;
+import instructions_cn;
 
 Block task
 {
