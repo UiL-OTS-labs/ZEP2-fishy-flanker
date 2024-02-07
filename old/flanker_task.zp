@@ -38,7 +38,7 @@ import std_exit_page1;
 import std_blank_page;
 import std_pause_page;
 
-import texts_cn;
+import std_texts_cn;
 
 import io_beexybox;
 

@@ -4,3 +4,5 @@ const string PRE_PRAC_INSTRUCTION =
     "<b>左</b>还是<b>右</b>？";
 
 const string POST_PRAC_INSTRUCTION = PRE_PRAC_INSTRUCTION;
+
+const string INSTRUCTION_OVERLAY = "";
