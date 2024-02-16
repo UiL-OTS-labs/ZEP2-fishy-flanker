@@ -49,7 +49,7 @@ const string	PRAC_ITEM_FILENAME = "prac_items.csv";
 const string	TEST_ITEM_FILENAME = "test_items.csv";
 
 // Height is automatically adjusted for the fish images
-const int 		IMAGE_WIDTH 					= 150;
+const int 		IMAGE_WIDTH 					= 300;
 
 const real      ARROW_WIDTH                     = 8;
 const real      ARROW_HEIGHT                    = 50;

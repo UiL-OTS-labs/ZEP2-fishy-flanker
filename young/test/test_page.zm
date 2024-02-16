@@ -62,7 +62,7 @@ Page test_page
         {
             init()
             {
-                size = 1000, 500;
+                size = 1500, 500;
                 fill_pattern_color = TEST_PAGE_STIMULUS_COLOR;
                 offset_x = width / 2;
                 offset_y = height / 2;
