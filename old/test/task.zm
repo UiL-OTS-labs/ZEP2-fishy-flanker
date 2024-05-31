@@ -69,8 +69,8 @@ Block task
             entry()
             {
                 pause_page.set_text(
-                        "Je had er " + num_correct + " goed.\n"
-                        "Probeer er zoveel mogelijk goed te beantwoorden."
+                        "你只回答对了 " + num_correct + " 道题目\n"
+                        "请再尝试一次，答对越多越好。"
                         );
                 pause_page.action(this);
             }
