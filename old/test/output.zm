@@ -54,7 +54,7 @@ int calc_num_practice_correct()
 
     while (i < prac_output.size)
     {
-        if (prac_output[i].correct)
+        if (prac_output[i].correct > 0)
             num_correct += 1;
         i++;
     }
