@@ -123,16 +123,16 @@ Page test_page
     Response response
     {
         // Response data.
-        DirectionType     value;          // response value: 0=no, 1=yes, -1=timeout
-        int     rt;             // response time [ms]
-        int     correct;        // correct response: 0=no, 1=yes, -1=n.a.
+        DirectionType   value;          // response value: 0=no, 1=yes, -1=timeout
+        int             rt;             // response time [ms]
+        int             correct;        // correct response: 0=no/no-response, 1=yes.
 
 
         void clear()
         {
             value = NONE;
             rt = -9999;
-            correct = -1;
+            correct = 0;
         }
 
 
